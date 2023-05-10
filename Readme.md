@@ -118,10 +118,10 @@ For more customized setups, a more in depth guide about the config can be found 
 To initialize the chains, run the following command:
 
 ```bash
-gm nuke
+gm start
 ```
 
-Nuke command is used to stop any running nodes, delete any previous configurations (if they exist), and restart the nodes with the new configurations. If you don't have any previous configurations, you can use the `gm start` command instead.
+If you think that there is any reason you might have a previous gm configuration, then run `gm nuke` before running `gm start`. Nuke command is used to stop any running nodes, delete any previous configurations (if they exist).
 
 To see if the nodes are running, run the following command:
 
