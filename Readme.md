@@ -18,6 +18,7 @@
     - [Description](#description)
     - [Build the Counter Contract](#build-the-counter-contract)
     - [Build the IBC Contracts](#build-the-ibc-contracts)
+    - [Creating the Typescript Bindings](#creating-the-typescript-bindings)
 
 ## Install Pre-requisites
 
@@ -240,7 +241,7 @@ These queries are unlike the queries that are made between smart contracts that 
 
 ### Build the Counter Contract
 
-First, we will build the counter contract. In an appropriate directory, run the following command:
+First, we will build the counter contract. A compiled version of this contract is in `./contract_binaries/` directory if you want to skip this step. In an appropriate directory, run the following command:
 
 ```bash
 cargo generate --git https://github.com/CosmWasm/cw-template.git --name counter-contract
@@ -259,7 +260,7 @@ The contract can be found in `./artifacts/`.
 
 ### Build the IBC Contracts
 
-Now, we will build the query receiver contract. In an appropriate directory, run the following command:
+Compiled versions of these contracts are in the `./contract_binaries/` directory if you want to skip this step. Now, we will build the query receiver contract. In an appropriate directory, run the following command:
 
 ```bash
 git clone https://github.com/JakeHartnell/cw-ibc-queries.git
@@ -276,3 +277,26 @@ docker run --rm -v "$(pwd)":/code \
 ```
 
 The contracts can be found in `./artifacts/`.
+
+### Creating the Typescript Bindings
+
+Now that we have the contracts, we will create the typescript bindings for them. This way, once we deploy them, we can interact with them using typescript. To do this, we will use the [ts-codegen](https://github.com/CosmWasm/ts-codegen) tool. First, install the tool:
+
+```bash
+npm install -g @cosmwasm/ts-codegen
+```
+
+Enter the directory of the contract you want to create bindings for and run:
+
+```bash
+cargo schema
+mkdir ts
+cosmwasm-ts-codegen generate \
+          --plugin client \
+          --schema ls ./schema \
+          --out ./ts \
+          --name ibc_query_receiver \
+          --no-bundle
+```
+
+This will create the bindings in the `ts/` directory. Do this for all three contracts.
