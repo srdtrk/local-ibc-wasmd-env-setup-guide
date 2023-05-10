@@ -16,6 +16,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@cosmjs/cosmwasm-stargate": "^0.30.1"
+    "@cosmjs/cosmwasm-stargate": "^0.30.1",
+    "dotenv": "^16.0.3"
   }
 }
