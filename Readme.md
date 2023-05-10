@@ -295,8 +295,8 @@ cosmwasm-ts-codegen generate \
           --plugin client \
           --schema ls ./schema \
           --out ./ts \
-          --name ibc_query_receiver \
+          --name INSERT_CONTRACT_NAME \
           --no-bundle
 ```
 
-This will create the bindings in the `ts/` directory. Do this for all three contracts.
+This will create the bindings in a `ts/` directory. Do this for all three contracts.
