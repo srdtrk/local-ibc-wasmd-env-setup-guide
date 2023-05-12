@@ -1,18 +1,5 @@
 import fs from "fs";
-import path from "path";
 import { SigningCosmWasmClient } from "@cosmjs/cosmwasm-stargate";
-import { createSigningClient } from "./createClients";
-import { Secp256k1HdWallet } from "@cosmjs/amino";
-import exp from "constants";
-
-// Load environment variables
-require("dotenv").config();
-
-// Path to your contract wasm file
-const contractWasmPath = path.join(
-  __dirname,
-  "../path-to-your-contract/contract.wasm"
-);
 
 // Upload a contract
 export async function uploadWasm(
